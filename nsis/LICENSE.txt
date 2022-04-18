@@ -1,0 +1,5 @@
+Welcome Using Slog Tool.
+
+This program provide a [Slog] Windows client, which designing based on [easy to use], and display the log info of a online system on real time. You can get more guide information from [https://www.lifanko.cn].
+
+Thank your for using, hope you enjoy it.

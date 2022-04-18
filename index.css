@@ -1,0 +1,253 @@
+body {
+    margin: 0;
+    padding: 0;
+    word-break: break-all;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/*启动背景*/
+.starting {
+    background-color: #f9f9f9;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    z-index: -1;
+}
+
+.starting .loading {
+    text-align: center;
+    margin-top: 20%;
+    margin-bottom: 50%;
+}
+
+.starting .loading img {
+    width: 50%;
+}
+
+/*容器*/
+#app {
+    background-color: #fff;
+    width: 500px;
+    display: none;
+}
+
+/*连接选项*/
+.setting {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 460px;
+    background-color: #d1eaff;
+    padding: 20px;
+    box-shadow: 0 0 6px #757575;
+    transition: all 0.5s 0s;
+    margin-top: -210px;
+    opacity: 0;
+}
+
+.setting_show {
+    margin-top: 0;
+    opacity: 1;
+}
+
+.setting .input_text {
+    padding: 5px 10px;
+    font-size: 16px;
+    outline: none;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+}
+
+.setting .input_row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.setting .label {
+    min-width: 100px;
+}
+
+.setting .tip {
+    text-align: right;
+    font-size: 12px;
+    color: #777;
+    margin-bottom: -10px;
+}
+
+.setting .auth {
+    background-color: aliceblue;
+    font-size: 12px;
+    color: #F40;
+    font-style: italic;
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+
+.setting .open_source_link {
+    color: dodgerblue;
+    text-decoration: underline;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+/*免费服务器*/
+.setting .server {
+    position: absolute;
+    right: 20px;
+    top: 30px;
+    text-align: center;
+    border: 1px solid #0caf0b;
+    padding: 0 2px 2px 2px;
+    border-radius: 4px;
+    color: #0caf0b;
+    cursor: pointer;
+    background-color: #02ff001f;
+}
+
+.setting .server img {
+    width: 50px;
+}
+
+.setting .server .desc {
+    font-size: 11px;
+    margin-top: -5px;
+}
+
+/*日志内容*/
+.logs {
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+}
+
+.logs .item {
+    display: flex;
+    flex-direction: column;
+}
+
+.logs .head {
+    display: flex;
+    flex-direction: row;
+    background-color: #e0ffff;
+    font-size: 12px;
+}
+
+.logs .item .url {
+    flex-grow: 1;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.logs .item .url_self {
+    color: #F40;
+}
+
+.logs .item .num {
+    background-color: rgba(0, 156, 156, 0.36);
+    min-width: 12px;
+    border-radius: 2px 0 0 2px;
+    text-align: center;
+    color: white;
+    padding: 0 2px;
+}
+
+.logs .item .content {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    padding-bottom: 10px;
+    align-items: center;
+}
+
+.logs .item .content .time {
+    flex-shrink: 0;
+    margin-right: 5px;
+    color: #777;
+}
+
+.logs .item .content .msg {
+    flex-grow: 1;
+}
+
+.logs .item .content .msg span {
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+.logs::-webkit-scrollbar {
+    width: 5px;
+}
+
+.logs::-webkit-scrollbar-thumb {
+    background: #008bff59;
+}
+
+.logs::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/*底部菜单*/
+.menu {
+    position: fixed;
+    height: 50px;
+    width: inherit;
+    background-color: #ddd;
+    bottom: 0;
+    transition: all 0.3s 0s;
+}
+
+.menu .opts {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+    box-shadow: inset 0 0 9px #6f6f6f;
+}
+
+.menu .opts .btn {
+    background-color: rgba(0, 0, 0, 0.28);
+    color: white;
+    text-align: center;
+    padding: 3px 10px;
+    border-radius: 3px;
+}
+
+.menu .opts .btn:hover {
+    background-color: #009c9c;
+    cursor: pointer;
+}
+
+.bg_success {
+    background-color: #16e016;
+}
+
+/*toast提示*/
+.toast {
+    position: fixed;
+    top: 40%;
+    background-color: rgba(0, 0, 0, 0.65);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 140px;
+    height: 140px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.toast .toast_icon img {
+    width: 90px;
+}
+
+.toast .toast_msg {
+    color: white;
+    font-size: 16px;
+}

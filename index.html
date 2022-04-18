@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <title>Slog Tool By LIFANKO</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+<div class="starting">
+    <div class="loading"><img src="img/loading.gif" alt="loading"></div>
+    <div>Slog Tool Starting... <span id="percent"></span></div>
+</div>
+<div id="app">
+    <div :class="setting ? 'setting setting_show' : 'setting'">
+        <div class="server" v-on:click="open_url('public')">
+            <div><img src="img/server.png" alt="公开服务器"></div>
+            <div class="desc">公开服务器</div>
+        </div>
+        <div class="input_row">
+            <div class="label">连接目标：</div>
+            <div><input class="input_text" type="text" placeholder="目标 IP/域名 + port + path" title="请输入连接目标"
+                        v-model="config.server"></div>
+        </div>
+        <div class="input_row">
+            <div class="label">身份ID：</div>
+            <div><input class="input_text" type="text" placeholder="您的身份标识" title="请输入身份ID" v-model="config.uuid"></div>
+        </div>
+        <div class="auth">本软件为<span class="open_source_link" v-on:click="open_url('about')">开源</span>项目，不鼓励自建服务器私有使用，因此暂不提供身份认证功能。
+        </div>
+        <div class="input_row">
+            <div class="label">保存路径：</div>
+            <div><input class="input_text" type="text" placeholder="日志保存路径" title="点击打开" v-model="config.save_path"
+                        readonly v-on:click="show_log" style="cursor: zoom-in">
+            </div>
+        </div>
+        <div class="tip">Tip：配置将在关闭选项菜单后保存[{{statistic.launch_time}}]</div>
+    </div>
+
+    <div class="logs">
+        <div v-for="(log, index) in logs" class="item">
+            <div class="head">
+                <div :class="log.url === '> [Slog Tool]' ? 'url url_self' : 'url'">{{log.url}}</div>
+                <div class="num">{{logs.length - index}}</div>
+            </div>
+            <div class="content">
+                <div class="time">[{{log.time}}]</div>
+                <div class="msg" v-html="log.msg"></div>
+            </div>
+        </div>
+    </div>
+
+    <div :class="connected===1 ? 'menu bg_success':'menu'">
+        <div class="opts">
+            <div class="btn" v-on:click="toggle_setting">选项</div>
+            <div class="btn" v-if="connected !== 0" v-on:click="toggle_connect">{{connected===1?'断开':'连接'}}</div>
+            <div class="btn" v-if="connected === 0">等待</div>
+            <div class="btn" v-on:click="clear_log">清空</div>
+            <div class="btn" v-on:click="save_log">保存</div>
+            <div class="btn" v-on:click="open_url('about')">关于</div>
+        </div>
+    </div>
+
+    <div class="toast" v-if="toast.timer">
+        <div class="toast_icon">
+            <img src="./img/success.png" alt="icon" v-if="toast.icon === 'success'">
+            <img src="./img/error.png" alt="icon" v-if="toast.icon === 'error'">
+        </div>
+        <div class="toast_msg">{{toast.msg}}</div>
+    </div>
+</div>
+
+<!-- You can also require other files to run in this process -->
+<script src="https://cdn.lifanko.cn/js/vue.min.js"></script>
+<script src="./renderer.js"></script>
+<script>
+    let percent = document.getElementById('percent')
+    let app_box = document.getElementById('app')
+
+    let percent_val = 0;
+
+    (function percent_add() {
+        percent_val++
+        percent.innerText = percent_val + '%'
+
+        setTimeout(function () {
+            if (percent_val < 100) {
+                percent_add()
+            } else {
+                app_box.style.display = 'block'
+            }
+        }, 20)
+    })()
+</script>
+</body>
+</html>
