@@ -20,9 +20,9 @@ ipcMain.on('ready', (e, msg) => {
                 launch_time: 1
             },
             config: {
-                server: 'ws://iot.lifanko.cn:8083/mqtt',
+                server: '',
                 uuid: 'slog tool',
-                save_path: 'C:/Slog Tool/'
+                save_path: __dirname + '/logs/'
             }
         }
     }
