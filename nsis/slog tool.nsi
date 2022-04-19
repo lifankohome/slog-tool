@@ -2,10 +2,10 @@
 
 ; 安装程序初始定义常量
 !define PRODUCT_NAME "Slog Tool"
-!define PRODUCT_VERSION "1.0.1"
-!define PRODUCT_PUBLISHER "LIFANKOHOME"
+!define PRODUCT_VERSION "1.0.2"
+!define PRODUCT_PUBLISHER "LIFANKO"
 !define PRODUCT_WEB_SITE "https://www.lifanko.cn"
-!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Miao.exe"
+!define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\SlogTool.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
 
@@ -16,13 +16,13 @@ SetCompressor lzma
 
 ; MUI 预定义常量
 !define MUI_ABORTWARNING
-!define MUI_ICON "..\WebstormProjects\slog\img\icon.ico"
+!define MUI_ICON "..\img\icon.ico"
 !define MUI_UNICON "${NSISDIR}\Contrib\Graphics\Icons\modern-uninstall.ico"
 
 ; 欢迎页面
 !insertmacro MUI_PAGE_WELCOME
 ; 许可协议页面
-!insertmacro MUI_PAGE_LICENSE "..\WebstormProjects\slog\nsis\LICENSE.txt"
+!insertmacro MUI_PAGE_LICENSE "LICENSE.txt"
 ; 安装过程页面
 !insertmacro MUI_PAGE_INSTFILES
 ; 安装完成页面
@@ -50,11 +50,11 @@ BrandingText "2022 LIFANKO · lifankohome@gmail.com"
 Section "MainSection" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite ifnewer
-  File "..\WebstormProjects\slog\OutApp\SlogTool-win32-x64\SlogTool.exe"
+  File "..\OutApp\SlogTool-win32-x64\SlogTool.exe"
   CreateDirectory "$SMPROGRAMS\Slog Tool"
   CreateShortCut "$SMPROGRAMS\Slog Tool\Slog Tool.lnk" "$INSTDIR\SlogTool.exe"
   CreateShortCut "$DESKTOP\Slog Tool.lnk" "$INSTDIR\SlogTool.exe"
-  File /r "..\WebstormProjects\slog\OutApp\SlogTool-win32-x64\*.*"
+  File /r "..\OutApp\SlogTool-win32-x64\*.*"
 SectionEnd
 
 Section -Post
